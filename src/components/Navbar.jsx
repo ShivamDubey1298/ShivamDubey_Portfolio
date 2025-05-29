@@ -68,51 +68,61 @@ const Navbar = () => {
           </div>
 
           <div className="md:hidden flex items-center space-x-4">
-            <ThemeToggle />
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen(true)}
               className={`${scrolled ? 'text-gray-600 dark:text-gray-400' : 'text-white'} hover:text-teal-400 transition-colors`}
+              aria-label="Open menu"
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div 
-        className={`md:hidden fixed inset-x-0 top-[72px] bg-white dark:bg-gray-900 shadow-lg transition-all duration-300 transform ${
-          isOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-        }`}
-      >
-        <div className="container mx-auto px-4 py-4">
-          {['Home', 'About', 'Projects', 'Contact'].map((link) => (
-            <Link
-              key={link}
-              to={link.toLowerCase()}
-              spy={true}
-              smooth={true}
-              offset={-70}
-              duration={500}
-              onClick={() => setIsOpen(false)}
-              className="block py-3 text-gray-800 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 border-b border-gray-200 dark:border-gray-700"
+      {/* Fullscreen Mobile menu */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 bg-gray-900/95 dark:bg-gray-900/95 flex flex-col">
+          <div className="flex items-center justify-between px-6 py-5 border-b border-gray-800">
+            <span className="font-bold text-xl text-white flex items-center">
+              <Code className="h-6 w-6 mr-2 text-teal-400" />
+              Shivam Dubey
+            </span>
+            <div className="flex items-center space-x-4">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white hover:text-teal-400 transition-colors p-2 rounded-lg"
+                aria-label="Close menu"
+              >
+                <X className="h-7 w-7" />
+              </button>
+            </div>
+          </div>
+          <div className="flex-1 flex flex-col justify-center items-center space-y-6 px-6">
+            {['Home', 'About', 'Projects', 'Contact'].map((link) => (
+              <Link
+                key={link}
+                to={link.toLowerCase()}
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+                onClick={() => setIsOpen(false)}
+                className="text-2xl font-semibold text-white hover:text-teal-400 transition-colors"
+              >
+                {link}
+              </Link>
+            ))}
+            <button
+              onClick={handleResumeDownload}
+              className="flex items-center mt-8 px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors text-lg font-medium"
             >
-              {link}
-            </Link>
-          ))}
-          <button
-            onClick={handleResumeDownload}
-            className="flex items-center mt-4 px-4 py-2 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors w-full justify-center"
-          >
-            <FileDown className="h-4 w-4 mr-2" />
-            Download Resume
-          </button>
+              <FileDown className="h-5 w-5 mr-2" />
+              Download Resume
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
