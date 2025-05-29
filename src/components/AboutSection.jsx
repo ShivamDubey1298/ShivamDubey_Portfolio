@@ -22,7 +22,7 @@ const AboutSection = () => {
             <div className="md:w-1/3">
               <div className="rounded-lg overflow-hidden shadow-xl mb-8">
                 <img 
-                  src=".\SHivam_Img.jpg" 
+                  src="https://raw.githubusercontent.com/ShivamDubey1298/ShivamDubey_Portfolio/main/SHivam.jpg" 
                   alt="Shivam Dubey"
                   className="w-full h-auto"
                 />
