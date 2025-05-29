@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply antialiased;
+}
+
+/* Typewriter effect styling */
+.typewriter-wrapper {
+  @apply inline;
+}
+
+.typewriter-cursor {
+  @apply text-teal-400;
+}
