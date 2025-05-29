@@ -16,6 +16,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on scroll if open
+  useEffect(() => {
+    if (!isOpen) return;
+    const closeMenuOnScroll = () => setIsOpen(false);
+    window.addEventListener('scroll', closeMenuOnScroll);
+    return () => window.removeEventListener('scroll', closeMenuOnScroll);
+  }, [isOpen]);
+
   const handleResumeDownload = () => {
     // Replace with your actual resume PDF URL
     const resumeUrl = 'https://drive.google.com/file/d/1qCYYQ_vK9yfAhUzjW-VK8RPjuCCixczw/view?usp=sharing';
