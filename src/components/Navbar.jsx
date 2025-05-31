@@ -89,7 +89,7 @@ const Navbar = () => {
 
       {/* Fullscreen Mobile menu */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 bg-gray-900 dark:bg-gray-900 flex flex-col">
+        <div className="fixed inset-0 z-50 bg-gray-900 flex flex-col">
           <div className="flex items-center justify-between px-6 py-5 border-b border-gray-800">
             <span className="font-bold text-xl text-white flex items-center">
               <Code className="h-6 w-6 mr-2 text-teal-400" />
