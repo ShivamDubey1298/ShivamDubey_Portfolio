@@ -106,7 +106,7 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className="flex-1 flex flex-col justify-center items-center space-y-6 px-6">
+          <div className="flex-1 flex flex-col justify-center items-center space-y-6 px-6 bg-gray-900">
             {['Home', 'About', 'Projects', 'Contact'].map((link) => (
               <Link
                 key={link}
